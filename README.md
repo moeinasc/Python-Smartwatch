@@ -49,7 +49,7 @@ pip install pillow
 sh
 Copy
 Edit
-git clone https://github.com/yourusername/smartwatch-os.git
+git clone (https://github.com/moeinasc)
 cd smartwatch-os
 ▶️ Run the Application
 sh

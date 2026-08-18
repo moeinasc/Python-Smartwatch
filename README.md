@@ -1,424 +1,109 @@
-⌚ Python Smartwatch OS v3.1
-A Modern Smartwatch Operating System Simulation Built with Python & Tkinter
+# Python Smartwatch OS v3.1
 
-screenshots/splashscreen.png
+A modular Tkinter smartwatch simulator and Raspberry Pi-ready prototype.
 
-A feature-rich smartwatch operating system simulator written entirely in Python using Tkinter.
+## Included
 
-Designed for desktop simulation, Raspberry Pi prototyping, and future migration to embedded hardware platforms.
+- Animated branded splash screen and coherent SVG/PNG icon library
+- Modern icon-card application launcher and watch-face controls
+- Class-based screen controller with reusable screens
+- Persistent JSON settings and state
+- Desktop hardware simulator with controllable sensor values
+- Hardware abstraction layer and Raspberry Pi adapter scaffold
+- Clock, lock screen, app menu, alarm, timer, stopwatch and notifications
+- Quick settings, health, weather, messages, connectivity and diagnostics
+- Swipe navigation, long-press handling, keyboard/button mappings and screen timeout
+- Square and round-display safe-area modes
+- Logging, recovery screen and unit tests
 
-🚀 Overview
+## Requirements
 
-Python Smartwatch OS is a modular smartwatch operating system written in Python.
+- Python 3.10 or newer
+- Tkinter
+- Optional: `psutil` for richer diagnostics
 
-The project started as a simple smartwatch interface and has evolved into a complete smartwatch simulation framework featuring:
+On Debian/Raspberry Pi OS, Tkinter is commonly installed as `python3-tk`.
 
-Modern UI
-Hardware simulator
-Persistent settings
-Health tracking
-Notifications
-Connectivity management
-Diagnostics tools
-Raspberry Pi hardware abstraction
-Splash screen and animated boot sequence
+## Run
 
-The architecture is designed so the same core logic can later be ported to physical smartwatch hardware.
-
-✨ Features
-⌚ Watch Core
-
-✅ Animated Boot Splash Screen
-
-Smartwatch OS logo
-Boot progress animation
-Service loading simulation
-
-✅ Home Screen
-
-Digital clock
-Date display
-Battery indicator
-Connectivity status
-Health summary
-
-✅ Lock Screen
-
-Secure watch lock
-Notification preview
-
-✅ App Launcher
-
-Modern icon-based layout
-Touch-friendly interface
-❤️ Health Tracking
-Heart Rate Monitor (simulated)
-Step Counter
-Activity Statistics
-Sensor Status Monitoring
-
-Health values are simulated in desktop mode and are intended for development purposes.
-
-🌤 Weather
-Current Temperature
-Weather Status
-Location Display
-Weather Service Architecture
-📩 Messaging & Notifications
-Messages
-Simulated Messages
-Notification Generation
-Message History
-Notification Centre
-Unread Counter
-Mark as Read
-Clear Notifications
-⏱ Productivity Tools
-Timer
-Multiple Presets
-Start / Pause
-Countdown Alerts
-Stopwatch
-High Accuracy Timer
-Start / Pause / Reset
-Alarm
-Alarm Scheduling
-Vibration Simulation
-Notification Triggering
-⚙️ Quick Settings
-Wi-Fi Toggle
-Bluetooth Toggle
-Sound Control
-Vibration Control
-Do Not Disturb Mode
-Battery Saver Mode
-Brightness Slider
-📶 Connectivity
-Supported Services
-Wi-Fi (Simulated)
-Bluetooth (Simulated)
-Mobile Data (Simulated)
-
-Architecture is prepared for future implementation of:
-
-BLE Pairing
-Phone Companion App
-Notification Synchronisation
-🔋 Power Management
-Automatic Screen Timeout
-Sleep Mode
-Wake Events
-Battery Monitoring
-Power Saving Options
-🛠 Diagnostics & Engineering Tools
-Smartwatch Diagnostics
-Hardware Information
-Battery State
-Sensor Status
-CPU Statistics
-Memory Statistics
-System Self-Test
-
-Designed especially for Raspberry Pi deployment and hardware troubleshooting.
-
-🎨 Interface Improvements in v3.1
-Modern UI
-
-✅ Dark Theme
-
-✅ Light Theme
-
-✅ Responsive Design
-
-✅ Scalable Layout
-
-✅ Round Display Safe Area Support
-
-✅ Modern Icon Library
-
-Included Icons
-Home
-Apps
-Health
-Weather
-Messages
-Alarm
-Timer
-Stopwatch
-Notifications
-Settings
-Connectivity
-Diagnostics
-Lock
-Quick Settings
-Battery
-
-And more.
-
-🖥 Screenshots
-Boot Splash Screen
-
-screenshots/splashscreen.png
-
-Home Screen
-
-screenshots/home.png
-
-App Launcher
-
-screenshots/apps.png
-
-Health App
-
-screenshots/health.png
-
-Quick Settings
-
-screenshots/quicksettings.png
-
-Diagnostics
-
-screenshots/diagnostics.png
-
-🛠 Installation
-Requirements
-Software
-Python 3.10+
-Tkinter
-Pillow
-Optional
-psutil
-
-For enhanced diagnostics.
-
-Install Dependencies
-Shell
-1
-pip install pillow psutil
-Show more lines
-📥 Clone Repository
-Shell
-1
-git clone https://github.com/moeinascari/python-smartwatch-os.git
-2
-cd python-smartwatch-os
-Show more lines
-▶️ Run Smartwatch OS
-Standard Mode
-Shell
-1
+```bash
 python main.py
-Show more lines
-Simulator Mode
-Shell
-1
+```
+
+Run with the simulator controls visible:
+
+```bash
 python main.py --simulator
-Show more lines
-Fullscreen Mode
-Shell
-1
+```
+
+Run full-screen:
+
+```bash
 python main.py --fullscreen
-Show more lines
-Raspberry Pi Mode
-Shell
-1
+```
+
+Select the Raspberry Pi adapter scaffold:
+
+```bash
 python main.py --hardware raspberry-pi --fullscreen
-Show more lines
-🎮 Navigation
-Keyboard Controls
-Key	ActionHome	Go Home
-Esc	Back
-F11	Fullscreen
-Left	Previous Screen
-Right	Next Screen
-Up	Quick Settings
-Down	Notifications
-Space	Side Button
-L	Lock Screen
-Touch Gestures
-Swipe Left / Right
+```
 
-Move between watch screens.
+The Raspberry Pi adapter deliberately uses safe fallbacks until the methods in
+`hardware/raspberry_pi.py` are connected to the exact display, sensors, GPIO,
+battery monitor and vibration driver used by your prototype.
 
-Swipe Down
+## Keyboard controls
 
-Open Quick Settings.
+- `Home`: home screen
+- `Escape`: back, or exit full-screen mode
+- `Left` / `Right`: previous/next main screen
+- `Up` / `Down`: quick settings/notifications
+- `Space`: simulated side button or wake
+- `L`: lock
+- `F11`: toggle full-screen
 
-Swipe Up
+Mouse/touch gestures can also be used on the display:
 
-Open Notifications.
+- Swipe left/right: move between main screens
+- Swipe down: quick settings
+- Swipe up: notifications
+- Long press: screen-specific action
 
-Long Press
+## Configuration
 
-Open contextual actions.
+The first run creates a writable state file in:
 
-🏗 Project Architecture
-Plain Text
-1
-python-smartwatch-os/
-2
-│
-3
-├── main.py
-4
-├── config.json
-5
-│
-6
-├── assets/
-7
-│ └── icons/
-8
-│
-9
-├── apps/
-10
-│ ├── home.py
-11
-│ ├── health.py
-12
-│ ├── weather.py
-13
-│ ├── messages.py
-14
-│ ├── timer.py
-15
-│ ├── stopwatch.py
-16
-│ ├── alarm.py
-17
-│ └── diagnostics.py
-18
-│
-19
-├── core/
-20
-│ ├── state.py
-21
-│ ├── scheduler.py
-22
-│ ├── event_bus.py
-23
-│ └── power_manager.py
-24
-│
-25
-├── hardware/
-26
-│ ├── simulator.py
-27
-│ └── raspberry_pi.py
-28
-│
-29
-├── services/
-30
-│ ├── storage.py
-31
-│ ├── notifications.py
-32
-│ ├── connectivity.py
-33
-│ └── weather.py
-34
-│
-35
-└── ui/
-36
-├── controller.py
-37
-├── theme.py
-38
-└── assets.py
-Show more lines
-🔬 Hardware Roadmap
-Desktop Simulator ✅
+```text
+~/.python_smartwatch/state.json
+```
 
-Current platform.
+Edit `config.json` to choose resolution, round safe area, time format and screen
+timeout defaults.
 
-Raspberry Pi Prototype ✅
+## Tests
 
-Planned Hardware:
+```bash
+python -m unittest discover -s tests -v
+```
 
-Raspberry Pi Zero 2 W
-Touchscreen Display
-Haptic Motor
-Battery Management Circuit
-Accelerometer
-Heart Rate Sensor
-Embedded Smartwatch Edition
+## Project layout
 
-Future migration path:
+- `core/`: controller-independent state, scheduler, events and power logic
+- `ui/`: screen classes, theme and reusable widgets
+- `apps/`: watch applications
+- `hardware/`: simulator and Raspberry Pi abstraction
+- `services/`: persistence, connectivity, notifications and weather simulation
+- `tests/`: state, timer and hardware tests
 
-ESP32-S3
-MicroPython
-LVGL GUI
-BLE Connectivity
-Low Power Modes
-🌟 Future Development
-Version 3.2
-Watch Face Designer
-Animated Widgets
-App Store Framework
-Multi-language Support
-Version 4.0
-BLE Phone Synchronisation
-OTA Updates
-Cloud Backup
-Widget Framework
-Real Sensor Support
-👨‍💻 Technologies
-Python
-Tkinter
-Pillow
-JSON
-Object-Oriented Design
-Raspberry Pi Integration
-Hardware Abstraction Layer
-🤝 Contributing
+## Hardware migration path
 
-Contributions are welcome!
+1. Validate the complete interface on desktop with `--simulator`.
+2. Run the same software on Raspberry Pi OS with a small touchscreen.
+3. Implement the functions marked `TODO` in `hardware/raspberry_pi.py` for the
+   selected GPIO and sensor hardware.
+4. For a low-power microcontroller version, retain the state/service concepts
+   but replace the Tkinter presentation layer with LVGL/MicroPython.
 
-Steps
-Fork the repository
-Create a feature branch
-Shell
-1
-git checkout -b feature/my-feature
-Show more lines
-Commit changes
-Shell
-1
-git commit -m "Add new feature"
-2
-``
-Show more lines
-Push branch
-Shell
-1
-git push origin feature/my-feature
-Show more lines
-Open a Pull Request
-📜 License
+## Icon assets
 
-Released under the MIT License.
-
-⭐ Support the Project
-
-If you enjoy this project, please consider:
-
-⭐ Starring the repository
-
-🐛 Reporting bugs
-
-💡 Suggesting new features
-
-🤝 Contributing code
-
-Developer
-
-Moein Ascari
-
-System Engineer | Python Developer | Network & Automation Enthusiast
-
-"Building an open-source smartwatch OS entirely in Python."
+The `assets/icons` directory contains editable SVG masters and 96 px PNG runtime versions. The icon manager caches images and safely falls back to text when an asset cannot be loaded.

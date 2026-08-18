@@ -1,0 +1,26 @@
+{
+  "app_name": "Python Smartwatch",
+  "version": "3.1.0",
+  "display": {
+    "width": 320,
+    "height": 320,
+    "round_safe_area": false,
+    "fullscreen": false
+  },
+  "clock": {
+    "use_24_hour": true
+  },
+  "power": {
+    "screen_timeout_seconds": 30,
+    "low_battery_threshold": 15
+  },
+  "simulation": {
+    "weather_location": "Dresden",
+    "weather_temperature_c": 21,
+    "weather_condition": "Partly cloudy"
+  },
+  "splash": {
+    "enabled": true,
+    "minimum_display_ms": 1100
+  }
+}

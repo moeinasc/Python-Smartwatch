@@ -1,0 +1,3 @@
+# The application uses the Python standard library.
+# Optional diagnostics enhancement:
+psutil>=5.9

@@ -96,7 +96,7 @@ python -m unittest discover -s tests -v
 - `tests/`: state, timer and hardware tests
 
 - ## Project Architecture
-- python-smartwatch-os/
+1 python-smartwatch-os/
 2 │
 3 ├── main.py
 4 ├── config.json

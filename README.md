@@ -95,6 +95,46 @@ python -m unittest discover -s tests -v
 - `services/`: persistence, connectivity, notifications and weather simulation
 - `tests/`: state, timer and hardware tests
 
+- ## Project Architecture
+- python-smartwatch-os/
+2 │
+3 ├── main.py
+4 ├── config.json
+5 │
+6 ├── assets/
+7 │ └── icons/
+8 │
+9 ├── apps/
+10 │ ├── home.py
+11 │ ├── health.py
+12 │ ├── weather.py
+13 │ ├── messages.py
+14 │ ├── timer.py
+15 │ ├── stopwatch.py
+16 │ ├── alarm.py
+17 │ └── diagnostics.py
+18 │
+19 ├── core/
+20 │ ├── state.py
+21 │ ├── scheduler.py
+22 │ ├── event_bus.py
+23 │ └── power_manager.py
+24 │
+25 ├── hardware/
+26 │ ├── simulator.py
+27 │ └── raspberry_pi.py
+28 │
+29 ├── services/
+30 │ ├── storage.py
+31 │ ├── notifications.py
+32 │ ├── connectivity.py
+33 │ └── weather.py
+34 │
+35 └── ui/
+36 ├── controller.py
+37 ├── theme.py
+38 └── assets.py
+
 ## Hardware migration path
 
 1. Validate the complete interface on desktop with `--simulator`.
